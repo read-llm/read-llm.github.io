@@ -26,461 +26,492 @@
 </head>
 <body>
 
+  <div class="root-div">  
+      <section class="hero">
+        <div class="hero-body">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered">
+              <div class="column has-text-centered">
+                <h1 class="title is-1 publication-title">Reinforced Advantage Feedback for LLM Refinement in Embodied Multi-Agent Collaboration</h1>
+                <div class="is-size-5 publication-authors">
+                  <span class="author-block">
+                    Anonymous Authors
+                  </span>
+                <div class="column has-text-centered">
+                  <div class="publication-links">
+                    <!-- PDF Link. -->
+                    <span class="link-block">
+                      <a href="#"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+                    <span class="link-block">
+                      <a href="#"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="ai ai-arxiv"></i>
+                        </span>
+                        <span>arXiv</span>
+                      </a>
+                    </span>
+                    <!-- Video Link. -->
+                    <!-- <span class="link-block">
+                      <a href="#"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fab fa-youtube"></i>
+                        </span>
+                        <span>Video</span>
+                      </a>
+                    </span> -->
+                    <!-- Code Link. -->
+                    <span class="link-block">
+                      <a href="https://github.com/fhwq/ReAd"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fab fa-github"></i>
+                        </span>
+                        <span>Code</span>
+                        </a>
+                    </span>
+                    <!-- Dataset Link. -->
+                    <!-- <span class="link-block">
+                      <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="far fa-images"></i>
+                        </span>
+                        <span>Data</span>
+                      </a>
+                    </span> -->
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Reinforced Advantage Feedback for LLM Refinement in Embodied Multi-Agent Collaboration</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              Anonymous Authors
-            </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <!-- <a href="#"></a><sup>1</sup>,</span> -->
-            <!-- <span class="author-block">
-              <a href="#">B</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="#">C</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#">D</a><sup>2</sup>, -->
-            </span>
-            <!-- <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span> -->
+      <section class="section">
+        <div class="container is-max-desktop">
+          <!-- Abstract. -->
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Abstract</h2>
+              <div class="content has-text-justified">
+                <p>
+                  Grounding the reasoning ability of large language models (LLMs) on embodied agents is 
+                  challeng-ing due to the complexity of the physical world. Especially, LLM planning for
+                  multi-agent collaboration requires communication of agents and credit assignment of 
+                  total feedback. Thus existing methods relying on physical verification or self-reflection suffer from excessive querying of LLMs.
+                </p>
+                <p>
+                  In this paper, we propose a novel frame-work for multi-agent collaboration that adopts
+                  <strong>Reinforced Advantage feedback (ReAd)</strong> for the self-refinement of plans. Specifically, 
+                  we perform critic regression to learn a sequential advantage function from LLM-planned 
+                  data, and then treat the LLM planner as an optimizer to generate actions that maximize 
+                  the advantage function, which endows LLM with the foresight to discern whether the action 
+                  contributes to accomplishing the final task.
+                </p>
+                <p>
+                  We provide theoretical analysis by extending advantage-weighted regression in reinforcement 
+                  learning to multi-agent systems. We adopt three multi-robot collaboration tasks with difficult 
+                  variants in experiments. The results show that ReAd surpasses baselines in success rate, and
+                  also significantly decreases the interaction steps of agents and query rounds of LLMs.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--/ Abstract. -->
+          <hr>
+          <!-- Method. -->
+          <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-3">Method</h2>
+                <div class="content align-text">
+                  <p>
+                      An overview of prompting and refinement. For each timestep, the LLM planner is given the history which contains states,
+                      actions, and advantages, and prompted to generate a plan with the highest advantage. The pre-trained critic is used to 
+                      evaluate the score of current plan generated by LLM. And compare the relationship between the score and the threshold 
+                      to determine whether to improve the plan. In addition, we propose two different approaches called <strong>ReAd-S</strong> and <strong>ReAd-J</strong>. 
+                      ReAd-S will require LLM to plan for each robot separately in a sequential decision manner, and ReAd-J will require 
+                      LLM to generate planning results for all robots at once.
+                    </p>
+                </div>
+                <div class="content" style="margin-top: 30px;">
+                  <img src="./static/images/method.png" alt="" srcset="" />
+                </div>
+              </div>
+          </div>
+          <hr>
+          <!--/ Method. -->
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              
+              <h2 class="title is-3">Experiments Exhibition</h2>
+              <div class="content align-text">
+                <p>
+                    We present Difficult Variants of RoCoBench (DV-RoCoBench) for embodied multi-robot collaboration, which is derived from RoCoBench.
+                    Below we will show how <strong>ReAd-S</strong>, <strong>ReAd-J</strong> and RoCo work on the three most difficult tasks. 
+                </p>
+              </div>
+                <h3 class="title is-3">Environment description</h3>
+                <div class="content align-text">
+                  <ul>
+                    <li><strong>Sweep Floor</strong>: There are some cubes on the table, and the two robots need to work together to sweep these cubes and dump them into the trash bin. <strong>Task Y3_G3</strong> indicates that the current task only needs to sweep three yellow and three green cubes.</li>
+                    <li><strong>Make Sandwich</strong>: There are some foods on the table, and the two robots must stack these foods in the exact order of the given recipe. <strong>Task recipe4</strong> means the recipe length of the current task is 9, <strong>task recipe3</strong> means the recipe length of the current task is 7.</li>
+                    <li><strong>Sort Cubes</strong>: There are three cubes on the table, and the three robots need to work together to place these cubes in their corresponding target positions. <strong>Task sort5</strong> indicates that there are two cubes in the current task whose distance from the target position is 3, and one cubes whose distance is 1.</li>
+                  </ul>  
+                </div>
+                <!-- <h3 class="title">Successful Example</h3>           -->
+            </div>
           </div>
 
-          <!-- <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
+          <div class="columns is-centered">
+            <!-- Joint -->
+            <div class="column">
+              <div class="columns is-centered has-text-centered">
+                  <h4 class="title is-3">ReAd-J</h4>
+              </div>
+              <div class="content">
+                <!-- Env description-->
+                  <!-- <div style="text-align: left; padding-top: 5px;">
+                    Each robot arm equipped with a dustpan and broom must collaborate to efficiently sweep all 
+                    cubes of the designated color(yellow and green) into the dustpan in this task.
+                  </div> -->
+                  <div class="columns is-centered">
+                      <div class="content">
+                          <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                              <source src="./static/videos/joint_33.mp4" type="video/mp4">
+                          </video>
+                          <div class="content" style="text-align: center; padding-top: 5px;">
+                              <span>
+                                  Task: Y3_G3 
+                              </span>
+                              <h4 style="font-size: 0.8em; color: #7db6f7">
+                                  <a href="./static/shows/joint_33/without_system.html">[LLM dialog]  &nbsp;
+                                  </a><a href="./static/shows/joint_33/steps13_success_True.html">[LLM dialog and prompts]</a>
+                              </h4>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="content">
+                  <!-- <div style="text-align: left; padding-top: 5px;">
+                    The two robots need to work together to collect and stack the ingredients in a specified order, 
+                    and the task is not successful until all the ingredients are correctly arranged.
+                  </div> -->
+                  <div class="columns is-centered">
+                      <div class="content">
+                          <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                              <source src="./static/videos/joint_recipe4.mp4" type="video/mp4">
+                          </video>
+                          <div class="content" style="text-align: center; padding-top: 5px;">
+                              <span>
+                                  Task: Recipe4 
+                              </span>
+                              <h4 style="font-size: 0.8em; color: #7db6f7">
+                                  <a href="./static/shows/joint_recipe4/without_system.html">[LLM dialog]  &nbsp;
+                                  </a><a href="./static/shows/joint_recipe4/steps10_success_True.html">[LLM dialog and prompts]</a>
+                              </h4>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="content">
+                  <!-- <div style="text-align: left; padding-top: 5px;">
+                    The task requires three robots positioned on opposite sides of a table to collaboratively place three target 
+                    blocks in specific locations, utilizing their limited range of motion and assisting each other as needed.
+                  </div> -->
+                  <div class="columns is-centered">
+                      <div class="content">
+                          <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                              <source src="./static/videos/joint_sort5.mp4" type="video/mp4">
+                          </video>
+                          <div class="content" style="text-align: center; padding-top: 5px;">
+                              <span>
+                                  Task: Sort5 
+                              </span>
+                              <h4 style="font-size: 0.8em; color: #7db6f7">
+                                  <a href="./static/shows/joint_sort5/without_system.html">[LLM dialog]  &nbsp;
+                                  </a><a href="./static/shows/joint_sort5/steps4_success_True.html">[LLM dialog and prompts]</a>
+                              </h4>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Seque-->
+            <div class="column">
+              <div class="columns is-centered has-text-centered">
+                  <h2 class="title is-3">ReAd-S</h2>
+              </div>
+              <div class="content">
+                  <!-- <div style="text-align: left; padding-top: 5px;">
+                    Each robot arm equipped with a dustpan and broom must collaborate to efficiently sweep all 
+                    cubes of the designated color(yellow and green) into the dustpan in this task.
+                  </div> -->
+                  <div class="columns is-centered">
+                      <div class="content">
+                          <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                              <source src="./static/videos/seque_33.mp4" type="video/mp4">
+                          </video>
+                          <div class="content" style="text-align: center; padding-top: 5px;">
+                              <span>
+                                  Task: Y3_G3 
+                              </span>
+                              <h4 style="font-size: 0.8em; color: #7db6f7">
+                                  <a href="./static/shows/seque_33/without_system.html">[LLM dialog]  &nbsp;
+                                  </a><a href="./static/shows/seque_33/steps13_success_True.html">[LLM dialog and prompts]</a>
+                              </h4>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="content">
+                  <!-- <div style="text-align: left; padding-top: 5px;">
+                    The two robots need to work together to collect and stack the ingredients in a specified order, 
+                    and the task is not successful until all the ingredients are correctly arranged.
+                  </div> -->
+                  <div class="columns is-centered">
+                      <div class="content">
+                          <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                              <source src="./static/videos/seque_recipe4.mp4" type="video/mp4">
+                          </video>
+                          <div class="content" style="text-align: center; padding-top: 5px;">
+                              <span>
+                                  Task: Recipe4 
+                              </span>
+                              <h4 style="font-size: 0.8em; color: #7db6f7">
+                                  <a href="./static/shows/seque_recipe4/without_system.html">[LLM dialog]  &nbsp;
+                                  </a><a href="./static/shows/seque_recipe4/steps10_success_True.html">[LLM dialog and prompts]</a>
+                              </h4>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="content">
+                  <!-- <div style="text-align: left; padding-top: 5px;">
+                    The task requires three robots positioned on opposite sides of a table to collaboratively place three target 
+                    blocks in specific locations, utilizing their limited range of motion and assisting each other as needed.
+                  </div> -->
+                  <div class="columns is-centered">
+                      <div class="content">
+                          <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                              <source src="./static/videos/seque_sort5.mp4" type="video/mp4">
+                          </video>
+                          <div class="content" style="text-align: center; padding-top: 5px;">
+                              <span>
+                                  Task: Sort5 
+                              </span>
+                              <h4 style="font-size: 0.8em; color: #7db6f7">
+                                  <a href="./static/shows/seque_sort5/without_system.html">[LLM dialog]  &nbsp;
+                                  </a><a href="./static/shows/seque_sort5/steps4_success_True.html">[LLM dialog and prompts]</a>
+                              </h4>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+            </div>
+
+            <!-- RoCo-->
+            <div class="column">
+              <div class="columns is-centered has-text-centered">
+                  <h2 class="title is-3">RoCo</h2>
+              </div>
+              <div class="content">
+                  <!-- <div style="text-align: left; padding-top: 5px;">
+                    Each robot arm equipped with a dustpan and broom must collaborate to efficiently sweep all 
+                    cubes of the designated color(yellow and green) into the dustpan in this task.
+                  </div> -->
+                  <div class="columns is-centered">
+                      <div class="content">
+                          <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                              <source src="./static/videos/roco_33.mp4" type="video/mp4">
+                          </video>
+                          <div class="content" style="text-align: center; padding-top: 5px;">
+                              <span>
+                                  Task: Y3_G3 
+                              </span>
+                              <h4 style="font-size: 0.8em; color: #7db6f7">
+                                  <a href="./static/shows/roco_33/without_system.html">[LLM dialog]  &nbsp;
+                                  </a><a href="./static/shows/roco_33/steps20_success_False.html">[LLM dialog and prompts]</a>
+                              </h4>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="content">
+                  <!-- <div style="text-align: left; padding-top: 5px;">
+                    The two robots need to work together to collect and stack the ingredients in a specified order, 
+                    and the task is not successful until all the ingredients are correctly arranged.
+                  </div> -->
+                  <div class="columns is-centered">
+                      <div class="content">
+                          <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                              <source src="./static/videos/roco_recipe4.mp4" type="video/mp4">
+                          </video>
+                          <div class="content" style="text-align: center; padding-top: 5px;">
+                              <span>
+                                  Task: Recipe4 
+                              </span>
+                              <h4 style="font-size: 0.8em; color: #7db6f7">
+                                  <a href="./static/shows/roco_recipe4/without_system.html">[LLM dialog]  &nbsp;
+                                  </a><a href="./static/shows/roco_recipe4/steps15_success_True.html">[LLM dialog and prompts]</a>
+                              </h4>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="content">
+                  <!-- <div style="text-align: left; padding-top: 5px;">
+                    The task requires three robots positioned on opposite sides of a table to collaboratively place three target 
+                    blocks in specific locations, utilizing their limited range of motion and assisting each other as needed.
+                  </div> -->
+                  <div class="columns is-centered">
+                      <div class="content">
+                          <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                              <source src="./static/videos/roco_sort5.mp4" type="video/mp4">
+                          </video>
+                          <div class="content" style="text-align: center; padding-top: 5px;">
+                              <span>
+                                  Task: Sort5 
+                              </span>
+                              <h4 style="font-size: 0.8em; color: #7db6f7">
+                                  <a href="./static/shows/roco_sort5/without_system.html">[LLM dialog]  &nbsp;
+                                  </a><a href="./static/shows/roco_sort5/steps16_success_True.html">[LLM dialog and prompts]</a>
+                              </h4>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+            </div>
+          </div>
+          <hr>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Robustness Experiments</h2>
+              <div class="content align-text">
+                <p>
+                  In addition, we also designed <strong>robustness experiments</strong> to compare the robustness of <strong>ReAd-S</strong> and <strong>RoCo</strong>.
+                  Specifically, we reset the state of the environment after A certain environment interaction, but do not clear the historical conversation information, 
+                  in this setting we compare the performance of ReAd-S and RoCo when they complete the task. The setting of the example shown below is as follows: 
+                  In <strong>task recipe3</strong>, reset the environment state after fixing the <strong>second environment interaction</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-centered">
+              <!-- Seque-->
+              <div class="column">
+                <div class="columns is-centered has-text-centered">
+                    <h3 class="title is-3">ReAd-S</h3>
+                </div>
+                <div class="content">
+                    <!-- <div style="text-align: left; padding-top: 5px;">
+                      Each robot arm equipped with a dustpan and broom must collaborate to efficiently sweep all 
+                      cubes of the designated color(yellow and green) into the dustpan in this task.
+                    </div> -->
+                    <div class="columns is-centered">
+                        <div class="content">
+                            <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                                <source src="./static/videos/seque_reset2.mp4" type="video/mp4">
+                            </video>
+                            <div class="content" style="text-align: center; padding-top: 5px;">
+                                <span>
+                                    Task: Y3_G3 
+                                </span>
+                                <h4 style="font-size: 0.8em; color: #7db6f7">
+                                    <a href="./static/shows/seque_reset2/without_system.html">[LLM dialog]  &nbsp;
+                                    </a><a href="./static/shows/seque_reset2/steps11_success_True.html">[LLM dialog and prompts]</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+              <!-- RoCo-->
+              <div class="column">
+                <div class="columns is-centered has-text-centered">
+                    <h3 class="title is-3">RoCo</h3>
+                </div>
+                <div class="content">
+                    <!-- <div style="text-align: left; padding-top: 5px;">
+                      Each robot arm equipped with a dustpan and broom must collaborate to efficiently sweep all 
+                      cubes of the designated color(yellow and green) into the dustpan in this task.
+                    </div> -->
+                    <div class="columns is-centered">
+                        <div class="content">
+                            <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                                <source src="./static/videos/roco_reset2.mp4" type="video/mp4">
+                            </video>
+                            <div class="content" style="text-align: center; padding-top: 5px;">
+                                <span>
+                                    Task: Y3_G3 
+                                </span>
+                                <h4 style="font-size: 0.8em; color: #7db6f7">
+                                    <a href="./static/shows/roco_reset2/without_system.html">[LLM dialog]  &nbsp;
+                                    </a><a href="./static/shows/roco_reset2/steps20_success_True.html">[LLM dialog and prompts]</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+          <h2 class="title">BibTeX</h2>
+          <pre><code>@article{2024read,
+        author    = {Anonymous Authors},
+        title     = {Reinforced Advantage Feedback for LLM Refinement in Embodied Multi-Agent Collaboration},
+        journal   = {submitted to ICML},
+        year      = {2024},
+      }</code></pre>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <!-- <div class="content has-text-centered">
+            <a class="icon-link"
+              href="./static/videos/nerfies_paper.pdf">
+              <i class="fas fa-file-pdf"></i>
+            </a>
           </div> -->
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="#"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <!-- <span class="link-block">
-                <a href="#"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span> -->
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/fhwq/ReAd"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                </a>
-              </span> -->
-
+          <div class="columns is-centered">
+            <div class="column is-8">
+              <div class="content">
+                  <p>
+                      This website is adapted from<a href="https://github.com/nerfies/nerfies.github.io"> Nerfies</a>, licensed
+                      under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License.</a>
+                    </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </footer>
   </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Grounding the reasoning ability of large language models (LLMs) on embodied agents is 
-            challeng-ing due to the complexity of the physical world. Especially, LLM planning for
-            multi-agent col-laboration requires communication of agents and credit assignment of 
-            total feedback. Thus exist-ing methods relying on physical verification or self-refl
-            ection suffer from excessive querying of LLMs.
-          </p>
-          <p>
-            In this paper, we propose a novel frame-work for multi-agent collaboration that adopts
-            Reinforced Advantage feedback (ReAd) for the self-refinement of plans. Specifically, 
-            we per-form critic regression to learn a sequential advan-tage function from LLM-planned 
-            data, and then treat the LLM planner as an optimizer to generate actions that maximize 
-            the advantage function, which endows LLM with the foresight to discern whether the action 
-            contributes to accomplishing the final task.
-          </p>
-          <p>
-            We provide theoretical analysis by extending advantage-weighted regression in reinforcement 
-            learning to multi-agent systems. We adopt three multi-robot collaboration tasks with difficult 
-            variants in experiments. The results show that ReAd surpasses baselines in success rate, and
-            also significantly decreases the interaction steps of agents and query rounds of LLMs.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-    <!-- Method. -->
-    <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Method</h2>
-          <div class="content">
-            <p>
-                An overview of prompting and refinement. For each timestep, the LLM planner is given the history which contains states,
-                actions, and advantages, and prompted to generate a plan with the highest advantage. The pre-trained critic is used to 
-                evaluate the score of current plan generated by LLM.
-            <img src="./static/images/method.png" alt="" srcset="">
-
-          </div>
-        </div>
-    </div>
-
-    <!--/ Method. -->
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Experiments Exhibition</h2>
-          <div class="content">
-            <p>
-                We present Difficult Variants of RoCoBench (DV-RoCoBench) for embodied multi-robot collaboration, which is derived from RoCoBench.
-                Below we will show how our two methods work on the three most difficult tasks.
-            </p>
-          </div>
-        </div>
-    </div>
-
-    <div class="columns is-centered">
-
-      <!-- Joint -->
-      
-      <div class="column">
-        <div class="columns is-centered has-text-centered">
-            <h2 class="title is-3">ReAd-J</h2>
-        </div>
-        <div class="content">
-          <!-- Env description-->
-            <div style="text-align: left; padding-top: 5px;">
-              Each robot arm equipped with a dustpan and broom must collaborate to efficiently sweep all 
-              cubes of the designated color(yellow and green) into the dustpan in this task.
-            </div>
-            <div class="columns is-centered">
-                <div class="content">
-                    <video id="dollyzoom" height="150" width="280" autoplay controls muted loop playsinline style="padding-top: 20px;">
-                        <source src="./static/videos/joint_33.mp4" type="video/mp4">
-                    </video>
-                    <div class="content" style="text-align: center; padding-top: 5px;">
-                        <span>
-                             Task: Y3_G3 
-                        </span>
-                        <h4 style="font-size: 0.8em; color: #7db6f7">
-                            <a href="./static/shows/joint_33/without_system.html">[LLM dialog]  &nbsp;
-                            </a><a href="./static/shows/joint_33/steps13_success_True.html">[LLM dialog and prompts]</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div style="text-align: left; padding-top: 5px;">
-              The two robots need to work together to collect and stack the ingredients in a specified order, 
-              and the task is not successful until all the ingredients are correctly arranged.
-            </div>
-            <div class="columns is-centered">
-                <div class="content">
-                    <video id="dollyzoom" height="150" width="280" autoplay controls muted loop playsinline style="padding-top: 20px;">
-                        <source src="./static/videos/joint_recipe4.mp4" type="video/mp4">
-                    </video>
-                    <div class="content" style="text-align: center; padding-top: 5px;">
-                        <span>
-                             Task: Recipe4 
-                        </span>
-                        <h4 style="font-size: 0.8em; color: #7db6f7">
-                            <a href="./static/shows/joint_recipe4/without_system.html">[LLM dialog]  &nbsp;
-                            </a><a href="./static/shows/joint_recipe4/steps10_success_True.html">[LLM dialog and prompts]</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div style="text-align: left; padding-top: 5px;">
-              The task requires three robots positioned on opposite sides of a table to collaboratively place three target 
-              blocks in specific locations, utilizing their limited range of motion and assisting each other as needed.
-            </div>
-            <div class="columns is-centered">
-                <div class="content">
-                    <video id="dollyzoom" height="150" width="280" autoplay controls muted loop playsinline style="padding-top: 20px;">
-                        <source src="./static/videos/joint_sort5.mp4" type="video/mp4">
-                    </video>
-                    <div class="content" style="text-align: center; padding-top: 5px;">
-                        <span>
-                             Task: Sort5 
-                        </span>
-                        <h4 style="font-size: 0.8em; color: #7db6f7">
-                            <a href="./static/shows/joint_sort5/without_system.html">[LLM dialog]  &nbsp;
-                            </a><a href="./static/shows/joint_sort5/steps4_success_True.html">[LLM dialog and prompts]</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </div>
-
-      <!-- Seque-->
-      <div class="column">
-        <div class="columns is-centered has-text-centered">
-            <h2 class="title is-3">ReAd-S</h2>
-        </div>
-        <div class="content">
-            <div style="text-align: left; padding-top: 5px;">
-              Each robot arm equipped with a dustpan and broom must collaborate to efficiently sweep all 
-              cubes of the designated color(yellow and green) into the dustpan in this task.
-            </div>
-            <div class="columns is-centered">
-                <div class="content">
-                    <video id="dollyzoom" height="150" width="280" autoplay controls muted loop playsinline style="padding-top: 20px;">
-                        <source src="./static/videos/seque_33.mp4" type="video/mp4">
-                    </video>
-                    <div class="content" style="text-align: center; padding-top: 5px;">
-                        <span>
-                             Task: Y3_G3 
-                        </span>
-                        <h4 style="font-size: 0.8em; color: #7db6f7">
-                            <a href="./static/shows/seque_33/without_system.html">[LLM dialog]  &nbsp;
-                            </a><a href="./static/shows/seque_33/steps13_success_True.html">[LLM dialog and prompts]</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div style="text-align: left; padding-top: 5px;">
-              The two robots need to work together to collect and stack the ingredients in a specified order, 
-              and the task is not successful until all the ingredients are correctly arranged.
-            </div>
-            <div class="columns is-centered">
-                <div class="content">
-                    <video id="dollyzoom" height="150" width="280" autoplay controls muted loop playsinline style="padding-top: 20px;">
-                        <source src="./static/videos/seque_recipe4.mp4" type="video/mp4">
-                    </video>
-                    <div class="content" style="text-align: center; padding-top: 5px;">
-                        <span>
-                             Task: Recipe4 
-                        </span>
-                        <h4 style="font-size: 0.8em; color: #7db6f7">
-                            <a href="./static/shows/seque_recipe4/without_system.html">[LLM dialog]  &nbsp;
-                            </a><a href="./static/shows/seque_recipe4/steps10_success_True.html">[LLM dialog and prompts]</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div style="text-align: left; padding-top: 5px;">
-              The task requires three robots positioned on opposite sides of a table to collaboratively place three target 
-              blocks in specific locations, utilizing their limited range of motion and assisting each other as needed.
-            </div>
-            <div class="columns is-centered">
-                <div class="content">
-                    <video id="dollyzoom" height="150" width="280" autoplay controls muted loop playsinline style="padding-top: 20px;">
-                        <source src="./static/videos/seque_sort5.mp4" type="video/mp4">
-                    </video>
-                    <div class="content" style="text-align: center; padding-top: 5px;">
-                        <span>
-                             Task: Sort5 
-                        </span>
-                        <h4 style="font-size: 0.8em; color: #7db6f7">
-                            <a href="./static/shows/seque_sort5/without_system.html">[LLM dialog]  &nbsp;
-                            </a><a href="./static/shows/seque_sort5/steps4_success_True.html">[LLM dialog and prompts]</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-      </div>
-
-      <!-- RoCo-->
-      <div class="column">
-        <div class="columns is-centered has-text-centered">
-            <h2 class="title is-3">RoCo</h2>
-        </div>
-        <div class="content">
-            <div style="text-align: left; padding-top: 5px;">
-              Each robot arm equipped with a dustpan and broom must collaborate to efficiently sweep all 
-              cubes of the designated color(yellow and green) into the dustpan in this task.
-            </div>
-            <div class="columns is-centered">
-                <div class="content">
-                    <video id="dollyzoom" height="150" width="280" autoplay controls muted loop playsinline style="padding-top: 20px;">
-                        <source src="./static/videos/roco_33.mp4" type="video/mp4">
-                    </video>
-                    <div class="content" style="text-align: center; padding-top: 5px;">
-                        <span>
-                             Task: Y3_G3 
-                        </span>
-                        <h4 style="font-size: 0.8em; color: #7db6f7">
-                            <a href="./static/shows/roco_33/without_system.html">[LLM dialog]  &nbsp;
-                            </a><a href="./static/shows/roco_33/steps20_success_False.html">[LLM dialog and prompts]</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div style="text-align: left; padding-top: 5px;">
-              The two robots need to work together to collect and stack the ingredients in a specified order, 
-              and the task is not successful until all the ingredients are correctly arranged.
-            </div>
-            <div class="columns is-centered">
-                <div class="content">
-                    <video id="dollyzoom" height="150" width="280" autoplay controls muted loop playsinline style="padding-top: 20px;">
-                        <source src="./static/videos/roco_recipe4.mp4" type="video/mp4">
-                    </video>
-                    <div class="content" style="text-align: center; padding-top: 5px;">
-                        <span>
-                             Task: Recipe4 
-                        </span>
-                        <h4 style="font-size: 0.8em; color: #7db6f7">
-                            <a href="./static/shows/roco_recipe4/without_system.html">[LLM dialog]  &nbsp;
-                            </a><a href="./static/shows/roco_recipe4/steps15_success_True.html">[LLM dialog and prompts]</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div style="text-align: left; padding-top: 5px;">
-              The task requires three robots positioned on opposite sides of a table to collaboratively place three target 
-              blocks in specific locations, utilizing their limited range of motion and assisting each other as needed.
-            </div>
-            <div class="columns is-centered">
-                <div class="content">
-                    <video id="dollyzoom" height="150" width="280" autoplay controls muted loop playsinline style="padding-top: 20px;">
-                        <source src="./static/videos/roco_sort5.mp4" type="video/mp4">
-                    </video>
-                    <div class="content" style="text-align: center; padding-top: 5px;">
-                        <span>
-                             Task: Sort5 
-                        </span>
-                        <h4 style="font-size: 0.8em; color: #7db6f7">
-                            <a href="./static/shows/roco_sort5/without_system.html">[LLM dialog]  &nbsp;
-                            </a><a href="./static/shows/roco_sort5/steps16_success_True.html">[LLM dialog and prompts]</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-      </div>
-    </div>
-       
-    
-    <!-- Concurrent Work. -->
-    <!-- <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Concurrent Work. -->
-  </div>
-</section>
-
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{2024read,
-  author    = {Anonymous Authors},
-  title     = {Reinforced Advantage Feedback for LLM Refinement in Embodied Multi-Agent Collaboration},
-  journal   = {submitted to ICML},
-  year      = {2024},
-}</code></pre>
-  </div>
-</section>
-
-
-<footer class="footer">
-  <div class="container">
-    <!-- <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-    </div> -->
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-            <p>
-                This website is adapted from<a href="https://github.com/nerfies/nerfies.github.io"> Nerfies</a>, licensed
-                under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-                  Commons Attribution-ShareAlike 4.0 International License.</a>
-              </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>
