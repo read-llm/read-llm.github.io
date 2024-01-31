@@ -1,20 +1,12 @@
 body {
   font-family: 'Noto Sans', sans-serif;
-  /* background-color: #efefef; */
 }
 
-/* .root-div{
-  /* background-color:red; */
-  
-} */
 
 section{
-   background-color: rgba(244, 234, 221, 0.607);
+  background-color: rgba(244, 234, 221, 0.607);
 }
 
-/* p{
-  
-} */
 
 
 
@@ -43,9 +35,6 @@ section{
 }
 
 
-/* .publication-title {
-} */
-
 .publication-banner {
   max-height: parent;
 
@@ -59,8 +48,6 @@ section{
   object-fit: fit;
 }
 
-/* .publication-header .hero-body {
-} */
 
 .publication-title {
     font-family: 'Google Sans', sans-serif;
@@ -82,8 +69,6 @@ section{
     font-weight: bolder;
 }
 
-/* .publication-authors {
-} */
 
 .publication-authors a {
    color: hsl(204, 86%, 53%) !important;
@@ -97,12 +82,6 @@ section{
   display: inline-block;
 }
 
-/* .publication-banner img {
-}
-
-.publication-authors {
-  /*color: #4286f4;*/
-} */
 
 .publication-video {
     position: relative;
@@ -122,8 +101,6 @@ section{
     height: 100%;
 }
 
-/* .publication-body img {
-} */
 
 .results-carousel {
   overflow: hidden;
@@ -153,8 +130,6 @@ section{
   border-radius: 5px;
 }
 
-/* .interpolation-video-column {
-} */
 
 .interpolation-panel .slider {
   margin: 0 !important;
