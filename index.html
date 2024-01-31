@@ -118,8 +118,8 @@
                   <p>
                       An overview of prompting and refinement. For each timestep \(t\), the LLM planner is given the history which contains states, actions, 
                       and advantages, and prompted to generate a plan with the highest advantage. The pre-trained critic is used to evaluate the score of
-                      the generated action \(\mathbb{S}_{ReAd}(a_{t}^{i})\). If \(\mathbb{S}_{ReAd}(a_{t}^{i})\) < ϵ, the failed plan is used as a prompt, 
-                      and the LLM planer is asked to refine the policy until the \(\mathbb{S}_{ReAd}(a_{t}^{i})\) > ϵ. The (refined) action is used to interact 
+                      the generated action \(\mathbb{S}_{ReAd}(a_{t}^{i})\). If \(\mathbb{S}_{ReAd}(a_{t}^{i})<\epsilon\), the failed plan is used as a prompt, 
+                      and the LLM planer is asked to refine the policy until the \(\mathbb{S}_{ReAd}(a_{t}^{i})>\epsilon\) . The (refined) action is used to interact 
                       with the environment, and the LLM planner is processed in the next step. In addition, we propose two different approaches called 
                       <strong>ReAd-S</strong> and <strong>ReAd-J</strong>. ReAd-S will require LLM to plan for each robot separately in a sequential decision 
                       manner, and ReAd-J will require LLM to generate planning results for all robots at once.
