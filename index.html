@@ -92,7 +92,7 @@
                   total feedback. Thus existing methods relying on physical verification or self-reflection suffer from excessive querying of LLMs.
                 </p>
                 <p>
-                  In this paper, we propose a novel framework for multi-agent collaboration that adopts
+                  In this paper, we propose a novel framework for <strong>multi-agent collaboration</strong> that adopts
                   <strong>Reinforced Advantage feedback (ReAd)</strong> for the self-refinement of plans. Specifically, 
                   we perform critic regression to learn a sequential advantage function from LLM-planned 
                   data, and then treat the LLM planner as an optimizer to generate actions that maximize 
@@ -103,7 +103,7 @@
                   We provide theoretical analysis by extending advantage-weighted regression in reinforcement 
                   learning to multi-agent systems. We adopt three multi-robot collaboration tasks with difficult 
                   variants in experiments. The results show that ReAd surpasses baselines in success rate, and
-                  also significantly decreases the interaction steps of agents and query rounds of LLMs.
+                  also significantly <strong>decreases the interaction steps of agents and query rounds</strong> of LLMs.
                 </p>
               </div>
             </div>
@@ -149,9 +149,9 @@
               </div>
                 <div class="content align-text">
                   <ul>
-                    <li><strong>Sweep Floor</strong>: There are some cubes on the table, and the two robots need to work together to sweep these cubes and dump them into the trash bin. <strong>Task Y3_G3</strong> indicates that the current task only needs to sweep three yellow and three green cubes.</li>
-                    <li><strong>Make Sandwich</strong>: There are some foods on the table, and the two robots must stack these foods in the exact order of the given recipe. <strong>Task recipe4</strong> means the recipe length of the current task is 9, <strong>task recipe3</strong> means the recipe length of the current task is 7.</li>
-                    <li><strong>Sort Cubes</strong>: There are three cubes on the table, and the three robots need to work together to place these cubes in their corresponding target positions. <strong>Task sort5</strong> indicates that there are two cubes in the current task whose distance from the target position is 3, and one cubes whose distance is 1.</li>
+                    <li><strong>Sweep Floor</strong>: There are some cubes on the table, and the two robots need to work together to sweep these cubes and dump them into the trash bin. <strong>Task Y3_G3</strong> indicates that the current task only needs to sweep <strong>three yellow</strong> and <strong>three green</strong> cubes.</li>
+                    <li><strong>Make Sandwich</strong>: There are some foods on the table, and the two robots must stack these foods in the exact order of the given recipe. <strong>Task recipe4</strong> means the recipe length of the current task is 9, <strong>task recipe3</strong> means the <strong>recipe length</strong> of the current task is 7.</li>
+                    <li><strong>Sort Cubes</strong>: There are three cubes on the table, and the three robots need to work together to place these cubes in their corresponding target positions. <strong>Task sort5</strong> indicates that there are two cubes in the current task whose <strong>distance</strong> from the target position is 3, and one cubes whose distance is 1.</li>
                   </ul>  
                 </div>
             </div>
@@ -351,7 +351,7 @@
               <div class="content align-text">
                 <p>
                   In addition, we also designed <strong>robustness experiments</strong> to compare the robustness of <strong>ReAd-S</strong> and <strong>RoCo</strong>.
-                  Specifically, we reset the state of the environment after A certain environment interaction, but do not clear the historical conversation information, 
+                  Specifically, we reset the state of the environment after a certain environment interaction, but do not clear the historical conversation information, 
                   in this setting we compare the performance of ReAd-S and RoCo when they complete the task. The setting of the example shown below is as follows: 
                   In <strong>task recipe3</strong>, reset the environment state after fixing the <strong>second environment interaction</strong>.
                 </p>
