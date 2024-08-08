@@ -559,6 +559,75 @@
 
           <hr>
 
+          
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Experiments Using LLama-3.1-70B-Instruct</h2>
+              <div class="content align-text">
+                <p>
+                  In addition, we use <strong>LLama-3.1-70B-Instruct</strong> to compare the performance of <strong>ReAd-J</strong>、<strong>ReAct</strong>、<strong>MindAgent</strong>
+                  、<strong>Reflexion</strong> and <strong>Central Planner</strong>.
+                  Specifically, we set the <strong>temperature</strong> of the model to 0 and the <strong>top_p</strong> to 0.1, take the default values for the other parameters of the model.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-centered">
+              <!-- Joint-->
+              <div class="column">
+                <div class="columns is-centered has-text-centered">
+                    <h3 class="title is-3">ReAd-J</h3>
+                </div>
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="content">
+                            <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                                <source src="./static/videos/llama70_joint_23.mp4" type="video/mp4">
+                            </video>
+                            <div class="content" style="text-align: center; padding-top: 5px;">
+                                <span>
+                                    Task: Y2_G3 
+                                </span>
+                                <h4 style="font-size: 0.8em; color: #7db6f7">
+                                    <a target="_blank" href="./static/shows/llama70_joint_23/without_system.html">[LLM dialog]  &nbsp;
+                                    </a><a target="_blank" href="./static/shows/llama70_joint_23/steps12_success_True.html">[LLM dialog and prompts]</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+              <!-- RoCo-->
+              <!-- <div class="column">
+                <div class="columns is-centered has-text-centered">
+                    <h3 class="title is-3">RoCo</h3>
+                </div>
+                <div class="content">
+                    <div class="columns is-centered">
+                        <div class="content">
+                            <video id="dollyzoom" height="130" width="230" autoplay controls muted loop playsinline style="padding-top: 20px;">
+                                <source src="./static/videos/roco_reset2.mp4" type="video/mp4">
+                            </video>
+                            <div class="content" style="text-align: center; padding-top: 5px;">
+                                <span>
+                                    Task: recipe3 
+                                </span>
+                                <h4 style="font-size: 0.8em; color: #7db6f7">
+                                    <a target="_blank" href="./static/shows/roco_reset2/without_system.html">[LLM dialog]  &nbsp;
+                                    </a><a target="_blank" href="./static/shows/roco_reset2/steps20_success_True.html">[LLM dialog and prompts]</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div> -->
+
+          </div>
+
+
+          <hr>
           <div class="columns is-centered has-text-centered">
             <div class="column is-four-fifths">
               <h2 class="title is-3">Robustness Experiments</h2>
